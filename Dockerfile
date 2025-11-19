@@ -14,10 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Définit une variable d’environnement pour Flask (optionnel si app.py contient app.run())
-ENV PORT=5000
+ENV PORT=8080
 
 # Expose le port
-EXPOSE 5000
+EXPOSE 8080
 
 # Commande pour lancer l’application
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "--workers", "1", "--threads", "8", "--timeout", "0", "main:app"]
+CMD gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 main:app
