@@ -1,6 +1,7 @@
 """
 Service de Prédiction - Détection de fraude avec Machine Learning
 """
+from logging import log
 import os
 import joblib
 import numpy as np
@@ -11,10 +12,11 @@ from pathlib import Path
 class PredictionService:
     """Service pour la prédiction de fraude avec le modèle ML"""
     
-    # Chemins par défaut des fichiers du modèle
-    DEFAULT_MODEL_PATH = 'ml/model.pkl'
-    DEFAULT_SCALER_PATH = 'ml/scaler.pkl'
-    DEFAULT_STATS_PATH = 'ml/train_stats.pkl'
+    # Chemins par défaut des fichiers du modèle (chemins ABSOLUS)
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    DEFAULT_MODEL_PATH = BASE_DIR / 'ml' / 'model.pkl'
+    DEFAULT_SCALER_PATH = BASE_DIR / 'ml' / 'scaler.pkl'
+    DEFAULT_STATS_PATH = BASE_DIR / 'ml' / 'train_stats.pkl'
     
     # Instance singleton
     _instance = None
@@ -47,40 +49,65 @@ class PredictionService:
         Returns:
             bool: True si chargement réussi, False sinon
         """
-        model_path = model_path or os.environ.get('MODEL_PATH', cls.DEFAULT_MODEL_PATH)
-        scaler_path = scaler_path or os.environ.get('SCALER_PATH', cls.DEFAULT_SCALER_PATH)
-        stats_path = stats_path or os.environ.get('STATS_PATH', cls.DEFAULT_STATS_PATH)
+        # Utiliser des chemins absolus
+        if model_path:
+            model_path = Path(model_path)
+            print(model_path)
+        else:
+            model_path = Path(os.environ.get('MODEL_PATH', cls.DEFAULT_MODEL_PATH))
+        
+        if scaler_path:
+            scaler_path = Path(scaler_path)
+            print(scaler_path)
+        else:
+            scaler_path = Path(os.environ.get('SCALER_PATH', cls.DEFAULT_SCALER_PATH))
+        
+        if stats_path:
+            stats_path = Path(stats_path)
+            print(stats_path)
+        else:
+            stats_path = Path(os.environ.get('STATS_PATH', cls.DEFAULT_STATS_PATH))
+        
+        print(f"🔍 Tentative de chargement depuis:")
+        print(f"   📁 Dossier de travail: {os.getcwd()}")
+        print(f"   📄 Modèle: {model_path.absolute()}")
+        print(f"   📄 Scaler: {scaler_path.absolute()}")
+        print(f"   📄 Stats: {stats_path.absolute()}")
         
         try:
             # Charger le modèle
-            if Path(model_path).exists():
-                cls._model = joblib.load(model_path)
-                print(f"✅ Modèle chargé : {model_path}")
+            if model_path.exists():
+                cls._model = joblib.load(str(model_path))
+                print(f"✅ Modèle chargé : {model_path} ({model_path.stat().st_size / 1024:.2f} KB)")
             else:
-                print(f"⚠️ Modèle non trouvé : {model_path}")
+                print(f"❌ Modèle non trouvé : {model_path}")
+                print(f"   Fichiers disponibles dans {model_path.parent}: {list(model_path.parent.glob('*')) if model_path.parent.exists() else 'Dossier inexistant'}")
                 return False
             
             # Charger le scaler
-            if Path(scaler_path).exists():
-                cls._scaler = joblib.load(scaler_path)
-                print(f"✅ Scaler chargé : {scaler_path}")
+            if scaler_path.exists():
+                cls._scaler = joblib.load(str(scaler_path))
+                print(f"✅ Scaler chargé : {scaler_path} ({scaler_path.stat().st_size / 1024:.2f} KB)")
             else:
-                print(f"⚠️ Scaler non trouvé : {scaler_path}")
+                print(f"❌ Scaler non trouvé : {scaler_path}")
                 return False
             
             # Charger les statistiques (optionnel)
-            if Path(stats_path).exists():
-                cls._train_stats = joblib.load(stats_path)
+            if stats_path.exists():
+                cls._train_stats = joblib.load(str(stats_path))
                 print(f"✅ Statistiques chargées : {stats_path}")
             else:
                 print(f"ℹ️ Statistiques non trouvées (optionnel) : {stats_path}")
                 cls._train_stats = None
             
             cls._is_loaded = True
+            print("🎉 Modèle chargé avec succès!")
             return True
             
         except Exception as e:
             print(f"❌ Erreur lors du chargement du modèle : {e}")
+            import traceback
+            traceback.print_exc()
             cls._is_loaded = False
             return False
     
@@ -105,14 +132,29 @@ class PredictionService:
         if not cls._is_loaded:
             return {
                 'loaded': False,
-                'message': 'Modèle non chargé'
+                'message': 'Modèle non chargé',
+                'paths': {
+                    'model': str(cls.DEFAULT_MODEL_PATH.absolute()),
+                    'scaler': str(cls.DEFAULT_SCALER_PATH.absolute()),
+                    'stats': str(cls.DEFAULT_STATS_PATH.absolute()),
+                },
+                'exists': {
+                    'model': cls.DEFAULT_MODEL_PATH.exists(),
+                    'scaler': cls.DEFAULT_SCALER_PATH.exists(),
+                    'stats': cls.DEFAULT_STATS_PATH.exists(),
+                }
             }
         
         return {
             'loaded': True,
             'model_type': type(cls._model).__name__,
             'has_scaler': cls._scaler is not None,
-            'has_train_stats': cls._train_stats is not None
+            'has_train_stats': cls._train_stats is not None,
+            'paths': {
+                'model': str(cls.DEFAULT_MODEL_PATH.absolute()),
+                'scaler': str(cls.DEFAULT_SCALER_PATH.absolute()),
+                'stats': str(cls.DEFAULT_STATS_PATH.absolute()),
+            }
         }
     
     @staticmethod

@@ -12,6 +12,7 @@ from routes.user_routes import user_bp
 from routes.transaction_routes import transaction_bp
 from routes.prediction_routes import prediction_bp
 from routes.auth_routes import auth_bp
+from services.prediction_service import PredictionService
 
 # Configuration du port
 port = int(os.environ.get("PORT", 8080))
@@ -132,6 +133,27 @@ def health_check():
         'api': {
             'version': '2.0.0',
             'environment': os.environ.get('ENV', 'production')
+        }
+    })
+@app.route('/debug/model-status')
+def model_status():
+    """Diagnostic complet du modèle"""
+    import os
+    from pathlib import Path
+    
+    base_dir = Path(__file__).resolve().parent
+    ml_dir = base_dir / 'ml'
+    
+    return jsonify({
+        'working_directory': str(Path.cwd()),
+        'base_directory': str(base_dir),
+        'ml_directory_exists': ml_dir.exists(),
+        'ml_files': list(str(f) for f in ml_dir.glob('*.pkl')) if ml_dir.exists() else [],
+        'model_info': PredictionService.get_model_info(),
+        'environment': {
+            'MODEL_PATH': os.environ.get('MODEL_PATH', 'Not set'),
+            'SCALER_PATH': os.environ.get('SCALER_PATH', 'Not set'),
+            'STATS_PATH': os.environ.get('STATS_PATH', 'Not set'),
         }
     })
 
