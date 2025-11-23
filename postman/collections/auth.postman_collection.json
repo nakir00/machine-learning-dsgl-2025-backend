@@ -1,0 +1,426 @@
+{
+  "info": {
+    "_postman_id": "cf074809-f0c0-4b7e-b038-f2443de758d7",
+    "name": "auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "register",
+      "id": "1b849625-9298-46b2-b211-0f0a2357abaf",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"email\": \"naby@mbaye.com\",\n        \"username\": \"naby\",\n        \"password\": \"123Qwerty\",\n        \"first_name\": \"mouhamed naby\", \n        \"last_name\": \"mbaye\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/auth/register",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "4f51e243-6e46-4e96-8a52-95f0f9c6639b",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n        \"email\": \"naby@mbaye.com\",\n        \"username\": \"naby\",\n        \"password\": \"123Qwerty\",\n        \"first_name\": \"John\", \n        \"last_name\": \"Doe\"\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/register",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "CREATED",
+          "code": 201,
+          "_postman_previewlanguage": "Text",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 13:52:13 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "299"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\n    \"data\": {\n        \"created_at\": \"2025-11-22T13:52:13\",\n        \"email\": \"naby@mbaye.com\",\n        \"first_name\": \"John\",\n        \"id\": 2,\n        \"is_active\": true,\n        \"last_login\": null,\n        \"last_name\": \"Doe\",\n        \"username\": \"naby\"\n    },\n    \"message\": \"Compte créé avec succès\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "id": "bca65fa4-80ed-4772-aac0-881a5a2f58d6",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"naby@mbaye.com\",\n    \"password\": \"123Qwerty\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/auth/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "5de4b721-d17f-4b45-9cdc-e02eb8f41592",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"naby@mbaye.com\",\n    \"password\": \"123Qwerty\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 13:54:53 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1032"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "body": "{\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzgxOTY5MywianRpIjoiMDI4YmYzODUtYTRmMC00NTAwLTlkM2ItYzFlOWQ3NGQ0ZGYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNzYzODE5NjkzLCJjc3JmIjoiMjY0ODM3MTQtZTc1MC00N2Q5LWFmNWYtMmRmMGFjYzZiMDBiIiwiZXhwIjoxNzYzODIwNTkzfQ.60CyPs-hEPWP15VzSfG4YeW20NM2BJjdpmn23bCuGYY\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzgxOTY5MywianRpIjoiMGUwY2ZmODAtZGUyNi00ZWZlLWI1MzQtNTE2ODgzYjU5NjAzIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjIsIm5iZiI6MTc2MzgxOTY5MywiY3NyZiI6IjBlYjcxZjUyLTMwMWQtNDZiZC05YTY1LTg5NWE2OWQ5M2MyYyIsImV4cCI6MTc2NjQxMTY5M30.3n5BJQQU_OpNY7GLFBfDIOM3SZLdBicUnKhbw6oWSJg\",\n        \"user\": {\n            \"created_at\": \"2025-11-22T13:52:13\",\n            \"email\": \"naby@mbaye.com\",\n            \"first_name\": \"John\",\n            \"id\": 2,\n            \"is_active\": true,\n            \"last_login\": \"2025-11-22T13:54:54\",\n            \"last_name\": \"Doe\",\n            \"username\": \"naby\"\n        }\n    },\n    \"message\": \"Connexion réussie\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "refresh",
+      "id": "0e80c43f-1ef9-4d20-a446-b729899db08a",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{refresh_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/auth/refresh",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "auth",
+            "refresh"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "42dcff47-923e-448d-9348-3a67c9a743a4",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/refresh",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 17:22:13 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "385"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T17:22:29.281Z",
+          "body": "{\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc2MzgzMjEzMywianRpIjoiY2E2OTU4NTgtYzliZC00OGMxLTg4YjQtZjE4NTQ2MDMxNTFhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MiwibmJmIjoxNzYzODMyMTMzLCJjc3JmIjoiYWNmZWFhZTItYTU2Yy00YmE4LWE3MTgtMzA1NTc3YTFmYzIyIiwiZXhwIjoxNzYzODMzOTMzfQ.z1rM-YN9RmGc1eI4a-lA18daCurTlEOcSTUvPeJoFqA\"\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "id": "df637ad1-632f-453c-a146-c4f925991a22",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{url}}/auth/logout",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "auth",
+            "logout"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "15b4e31b-0870-4a22-9c16-b3caf720b9f7",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "url": {
+              "raw": "{{url}}/auth/logout",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 17:42:27 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T17:42:34.580Z",
+          "body": "{\n    \"message\": \"Déconnexion réussie\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "change-password",
+      "id": "47c6ae77-a791-480c-9242-053f37404969",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"current_password\": \"Naby0000\",\n    \"new_password\": \"123Qwerty\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/auth/change-password",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "auth",
+            "change-password"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "0a339787-42b2-4e61-8acd-e23a4d2f96ee",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/auth/change-password",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "auth",
+                "change-password"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 19:11:36 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "81"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T19:25:26.771Z",
+          "body": "{\n    \"message\": \"Mot de passe modifié avec succès\",\n    \"success\": true\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  }
+}

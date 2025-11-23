@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "d03c8fe9-1410-40df-91b1-0965a4332418",
+    "name": "main",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40431409",
+    "_collection_link": "https://machine-learning-dsgl.postman.co/workspace/f8b15c16-0ddb-4543-8ea6-1899d53e704b/collection/40431409-d03c8fe9-1410-40df-91b1-0965a4332418?action=share&source=collection_link&creator=40431409"
+  },
+  "item": [
+    {
+      "name": "presentation",
+      "id": "cff7e724-ce27-4ca9-9340-a48e07a3eb25",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "540fe73d-1778-480e-84a1-ba6535429925",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 13:46:52 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1886"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"documentation\": {\n        \"health\": {\n            \"GET /health\": \"Vérifier l'état de l'API et de la base de données\"\n        },\n        \"predictions\": {\n            \"GET /predict/status\": \"Statut du modèle ML\",\n            \"POST /predict/batch\": \"Prédire un batch de transactions\",\n            \"POST /predict/reload\": \"Recharger le modèle\",\n            \"POST /predict/transaction\": \"Prédire une transaction\",\n            \"POST /predict/transaction/<id>\": \"Prédire pour une transaction en BDD\",\n            \"POST /predict/transaction/explain\": \"Analyser les facteurs de risque\",\n            \"POST /predict/transactions/pending\": \"Prédire toutes les transactions en attente\"\n        },\n        \"transactions\": {\n            \"DELETE /transactions/<id>\": \"Supprimer une transaction\",\n            \"GET /transactions\": \"Liste des transactions (pagination)\",\n            \"GET /transactions/<id>\": \"Détails d'une transaction\",\n            \"GET /transactions/account/<account_no>\": \"Transactions d'un compte\",\n            \"GET /transactions/fraud\": \"Transactions frauduleuses\",\n            \"GET /transactions/search\": \"Rechercher par montant\",\n            \"GET /transactions/stats\": \"Statistiques des transactions\",\n            \"POST /transactions\": \"Créer une transaction\",\n            \"POST /transactions/<id>/mark-fraud\": \"Marquer comme fraude\",\n            \"PUT /transactions/<id>\": \"Mettre à jour une transaction\"\n        },\n        \"users\": {\n            \"DELETE /users/<id>\": \"Supprimer un utilisateur\",\n            \"GET /users\": \"Liste des utilisateurs (pagination)\",\n            \"GET /users/<id>\": \"Détails d'un utilisateur\",\n            \"GET /users/search?q=\": \"Rechercher des utilisateurs\",\n            \"GET /users/stats\": \"Statistiques des utilisateurs\",\n            \"POST /users\": \"Créer un utilisateur\",\n            \"PUT /users/<id>\": \"Mettre à jour un utilisateur\"\n        }\n    },\n    \"message\": \"API de détection de fraude bancaire\",\n    \"status\": \"online\",\n    \"version\": \"2.0.0\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "id": "dde5f8ae-545a-4044-aaa0-94b945aa43e7",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/health",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "33fdc92a-0dff-455b-a3de-3cae87aaa755",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/health",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 13:48:20 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "346"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"api\": {\n        \"environment\": \"local\",\n        \"version\": \"2.0.0\"\n    },\n    \"database\": {\n        \"config\": {\n            \"database\": \"fraud_detection\",\n            \"host\": \"localhost\",\n            \"port\": \"3306\",\n            \"user\": \"fraud_user\"\n        },\n        \"message\": \"Connexion à la base de données réussie\",\n        \"status\": \"success\"\n    },\n    \"status\": \"healthy\"\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "d1ed8670-7802-4010-a2d8-293e7ac7713a",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "6115d1da-eccf-41c5-a196-bf5bee7819e4",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

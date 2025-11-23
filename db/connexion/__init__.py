@@ -1,0 +1,4 @@
+"""Module de connexion à la base de données"""
+from .connexion import db, init_db, create_tables, test_connection
+
+__all__ = ['db', 'init_db', 'create_tables', 'test_connection']

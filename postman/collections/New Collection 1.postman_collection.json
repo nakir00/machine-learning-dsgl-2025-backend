@@ -1,0 +1,559 @@
+{
+  "info": {
+    "_postman_id": "a0d3bba9-819b-4b3b-9d8c-6fde9728a0da",
+    "name": "predicts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "status",
+      "id": "3f7d94e2-a997-4911-bf78-396f23d6a318",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/predict/status",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "status"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "b454fde8-d5f3-4911-87cc-d068df15a1d2",
+          "name": "status",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/predict/status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "status"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 01:46:25 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "160"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T01:46:46.076Z",
+          "body": "{\n    \"model\": {\n        \"has_scaler\": true,\n        \"has_train_stats\": true,\n        \"loaded\": true,\n        \"model_type\": \"GradientBoostingClassifier\"\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "reload",
+      "id": "74ecc2ee-6998-410e-8ee6-5c7dd3ec604e",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"model_path\":\"\",\n    \"scaler_path\":\"\",\n    \"stats_path\":\"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/predict/reload",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "reload"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "89d3df2c-2659-402e-ba0b-ca9606dcae4d",
+          "name": "reload",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/predict/reload",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "reload"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 01:49:47 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "219"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T01:50:33.191Z",
+          "body": "{\n    \"message\": \"Modèle rechargé avec succès\",\n    \"model\": {\n        \"has_scaler\": true,\n        \"has_train_stats\": true,\n        \"loaded\": true,\n        \"model_type\": \"GradientBoostingClassifier\"\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_transaction",
+      "id": "56817ef3-25e4-4ec3-ab22-d963c2814ee8",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"gender\":0,\n    \"age\":0,\n    \"house_type_id\": 0,\n    \"contact_avaliability_id\": 0,\n    \"home_country\": 0,\n    \"account_no\": 0,\n    \"card_expiry_date\": 0,\n    \"cif\": 0,\n    \"transaction_amount\": 0,\n    \"transaction_country\": 0,\n    \"transaction_currency_code\": 0,\n    \"large_purchase\": 0,\n    \"product_id\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/predict/transaction",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "transaction"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "606fb766-f3c6-4db3-a75d-abeb84548e7b",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/predict/transaction",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "transaction"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 13:10:36 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "233"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T13:11:24.740Z",
+          "body": "{\n    \"data\": {\n        \"confidence\": 93.71,\n        \"is_fraud\": false,\n        \"label\": \"LÉGITIME\",\n        \"prediction\": 0,\n        \"probability\": {\n            \"fraud\": 6.29,\n            \"legitimate\": 93.71\n        },\n        \"success\": true\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "explain_transaction",
+      "id": "39965825-e57f-484b-bc8f-67fcae698bed",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"gender\":0,\n    \"age\":0,\n    \"house_type_id\": 0,\n    \"contact_avaliability_id\": 0,\n    \"home_country\": 0,\n    \"account_no\": 0,\n    \"card_expiry_date\": 0,\n    \"cif\": 0,\n    \"transaction_amount\": 0,\n    \"transaction_country\": 0,\n    \"transaction_currency_code\": 0,\n    \"large_purchase\": 0,\n    \"product_id\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/predict/transaction/explain",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "transaction",
+            "explain"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "8415c67b-770e-4f21-b8e8-905bf8230624",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"gender\":0,\n    \"age\":0,\n    \"house_type_id\": 0,\n    \"contact_avaliability_id\": 0,\n    \"home_country\": 0,\n    \"account_no\": 0,\n    \"card_expiry_date\": 0,\n    \"cif\": 0,\n    \"transaction_amount\": 0,\n    \"transaction_country\": 0,\n    \"transaction_currency_code\": 0,\n    \"large_purchase\": 0,\n    \"product_id\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/predict/transaction/explain",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "transaction",
+                "explain"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 13:13:35 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "400"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T13:13:55.194Z",
+          "body": "{\n    \"analysis\": {\n        \"factors_count\": 0,\n        \"recommendation\": \"Aucune action requise\",\n        \"risk_factors\": [],\n        \"risk_level\": \"LOW\",\n        \"risk_score\": 0\n    },\n    \"prediction\": {\n        \"confidence\": 93.71,\n        \"is_fraud\": false,\n        \"label\": \"LÉGITIME\",\n        \"prediction\": 0,\n        \"probability\": {\n            \"fraud\": 6.29,\n            \"legitimate\": 93.71\n        },\n        \"success\": true\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_batch",
+      "id": "b3d70d69-9ba6-4412-b8ce-3006f1927fc1",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"transactions\": [\n        {\n            \"gender\": 0,\n            \"age\": 0,\n            \"house_type_id\": 0,\n            \"contact_avaliability_id\": 0,\n            \"home_country\": 0,\n            \"account_no\": 0,\n            \"card_expiry_date\": 0,\n            \"cif\": 0,\n            \"transaction_amount\": 0,\n            \"transaction_country\": 0,\n            \"transaction_currency_code\": 0,\n            \"large_purchase\": 0,\n            \"product_id\": 0\n        },\n        {\n            \"gender\": 1,\n            \"age\": 1,\n            \"house_type_id\": 1,\n            \"contact_avaliability_id\": 1,\n            \"home_country\": 1,\n            \"account_no\": 1,\n            \"card_expiry_date\": 1,\n            \"cif\": 1,\n            \"transaction_amount\": 1,\n            \"transaction_country\": 1,\n            \"transaction_currency_code\": 1,\n            \"large_purchase\": 1,\n            \"product_id\": 1\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/predict/batch",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "batch"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "9fcb119c-52a1-4a45-85e6-2829f1c7051f",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/predict/batch",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "batch"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 13:17:27 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "608"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T13:17:36.601Z",
+          "body": "{\n    \"fraud_detected\": 0,\n    \"fraud_rate\": 0,\n    \"legitimate\": 2,\n    \"predictions\": [\n        {\n            \"confidence\": 93.71,\n            \"index\": 0,\n            \"is_fraud\": false,\n            \"label\": \"LÉGITIME\",\n            \"prediction\": 0,\n            \"probability\": {\n                \"fraud\": 6.29,\n                \"legitimate\": 93.71\n            },\n            \"success\": true\n        },\n        {\n            \"confidence\": 99.04,\n            \"index\": 1,\n            \"is_fraud\": false,\n            \"label\": \"LÉGITIME\",\n            \"prediction\": 0,\n            \"probability\": {\n                \"fraud\": 0.96,\n                \"legitimate\": 99.04\n            },\n            \"success\": true\n        }\n    ],\n    \"success\": true,\n    \"total\": 2\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_existing_transaction",
+      "id": "84572d7b-be75-4b3e-8203-bd974537b2ff",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{url}}/predict/transaction/2",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "transaction",
+            "2"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "4aad8df4-5b19-46b4-91a9-435bc540db92",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "url": {
+              "raw": "{{url}}/predict/transaction/2",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "transaction",
+                "2"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 13:21:03 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "502"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T13:21:07.943Z",
+          "body": "{\n    \"message\": \"Prédiction effectuée et transaction mise à jour\",\n    \"prediction\": {\n        \"confidence\": 93.71,\n        \"is_fraud\": false,\n        \"label\": \"LÉGITIME\",\n        \"probability\": {\n            \"fraud\": 6.29,\n            \"legitimate\": 93.71\n        }\n    },\n    \"success\": true,\n    \"transaction\": {\n        \"account_no\": 0,\n        \"created_at\": \"2025-11-23T01:34:32\",\n        \"id\": 2,\n        \"potential_fraud\": 0,\n        \"prediction\": 0,\n        \"prediction_proba\": 0.0629,\n        \"transaction_amount\": 0,\n        \"user_id\": 1\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_all_pending",
+      "id": "73f429b1-de46-4011-bfc4-7c24fd4aba2e",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{url}}/predict/transactions/pending",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "transactions",
+            "pending"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "9bb82c26-c1e6-440f-9b59-97c5b6812a30",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "url": {
+              "raw": "{{url}}/predict/transactions/pending",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "transactions",
+                "pending"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 13:37:03 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "105"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T13:41:33.319Z",
+          "body": "{\n    \"message\": \"Aucune transaction en attente de prédiction\",\n    \"processed\": 0,\n    \"success\": true\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  }
+}

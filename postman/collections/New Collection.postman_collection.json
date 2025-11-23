@@ -1,0 +1,981 @@
+{
+  "info": {
+    "_postman_id": "551aa675-f5b7-4970-a03c-cce63c13951a",
+    "name": "transactions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "get_transactions",
+      "id": "564717fa-d6fd-43b1-99cf-db895492e8b5",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions?page=1&per_page=20",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "per_page",
+              "value": "20",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "ebebc18a-0127-4d62-8bfd-40a85ed1afd9",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 22:57:46 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "185"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T22:59:21.643Z",
+          "body": "{\n    \"count\": 0,\n    \"data\": [],\n    \"pagination\": {\n        \"has_next\": false,\n        \"has_prev\": false,\n        \"page\": 1,\n        \"pages\": 0,\n        \"per_page\": 20,\n        \"total\": 0\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_my_transactions",
+      "id": "059533e0-755c-4941-8ead-cac2a034e0a9",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/my?page=1&per_page=20",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "my"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "per_page",
+              "value": "20",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "89926c46-3e93-4552-811f-792070d523f3",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/my",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "my"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 22:59:11 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "185"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T22:59:44.617Z",
+          "body": "{\n    \"count\": 0,\n    \"data\": [],\n    \"pagination\": {\n        \"has_next\": false,\n        \"has_prev\": false,\n        \"page\": 1,\n        \"pages\": 0,\n        \"per_page\": 20,\n        \"total\": 0\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_my_transaction_stats",
+      "id": "5b28683b-b2a8-41f8-81db-2d6789caef48",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/my/stats",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "my",
+            "stats"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "c7b69c17-6428-430d-b51d-d6cbd63e9e32",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/my/stats",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "my",
+                "stats"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 23:01:37 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "200"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T23:02:06.371Z",
+          "body": "{\n    \"stats\": {\n        \"average_amount\": 0,\n        \"fraud_rate\": 0,\n        \"fraudulent\": 0,\n        \"legitimate\": 0,\n        \"max_amount\": 0,\n        \"total_amount\": 0,\n        \"total_transactions\": 0\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "create_transaction",
+      "id": "7d6b7ca8-d82b-4dc3-b082-f4a1d8b40d0a",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"gender\":0,\n    \"age\":0,\n    \"house_type_id\": 0,\n    \"contact_avaliability_id\": 0,\n    \"home_country\": 0,\n    \"account_no\": 0,\n    \"card_expiry_date\": 0,\n    \"cif\": 0,\n    \"transaction_amount\": 0,\n    \"transaction_country\": 0,\n    \"transaction_currency_code\": 0,\n    \"large_purchase\": 0,\n    \"product_id\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/transactions",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "c2a436a4-b992-4ebf-bade-2ad88128dde5",
+          "name": "main response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"gender\":0,\n    \"age\":0,\n    \"house_type_id\": 0,\n    \"contact_avaliability_id\": 0,\n    \"home_country\": 0,\n    \"account_no\": 0,\n    \"card_expiry_date\": 0,\n    \"cif\": 0,\n    \"transaction_amount\": 0,\n    \"transaction_country\": 0,\n    \"transaction_currency_code\": 0,\n    \"large_purchase\": 0,\n    \"product_id\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/transactions",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions"
+              ]
+            }
+          },
+          "status": "CREATED",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 23:46:02 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "609"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T23:46:15.061Z",
+          "body": "{\n    \"data\": {\n        \"account_no\": 0,\n        \"age\": 0,\n        \"card_expiry_date\": 0,\n        \"cif\": 0,\n        \"contact_avaliability_id\": 0,\n        \"created_at\": \"2025-11-22T23:46:02\",\n        \"gender\": 0,\n        \"home_country\": 0,\n        \"house_type_id\": 0,\n        \"id\": 1,\n        \"large_purchase\": 0,\n        \"potential_fraud\": 0,\n        \"prediction\": null,\n        \"prediction_proba\": null,\n        \"product_id\": 0,\n        \"transaction_amount\": 0,\n        \"transaction_country\": 0,\n        \"transaction_currency_code\": 0,\n        \"updated_at\": \"2025-11-22T23:46:02\",\n        \"user_id\": 1\n    },\n    \"message\": \"Transaction créée avec succès\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_transaction",
+      "id": "d3d6ef81-1ec7-4fd8-aad5-dd6ab9f684f6",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/1",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "1fca3b4b-056f-46e4-a02e-729d605c8932",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 22 Nov 2025 23:49:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "548"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-22T23:49:53.674Z",
+          "body": "{\n    \"data\": {\n        \"account_no\": 0,\n        \"age\": 0,\n        \"card_expiry_date\": 0,\n        \"cif\": 0,\n        \"contact_avaliability_id\": 0,\n        \"created_at\": \"2025-11-22T23:46:02\",\n        \"gender\": 0,\n        \"home_country\": 0,\n        \"house_type_id\": 0,\n        \"id\": 1,\n        \"large_purchase\": 0,\n        \"potential_fraud\": 0,\n        \"prediction\": null,\n        \"prediction_proba\": null,\n        \"product_id\": 0,\n        \"transaction_amount\": 0,\n        \"transaction_country\": 0,\n        \"transaction_currency_code\": 0,\n        \"updated_at\": \"2025-11-22T23:46:02\",\n        \"user_id\": 1\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "update_transaction",
+      "id": "ee2e2fe9-7d64-47e1-a56d-0731c50d462f",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/transactions/1",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "ec04a9f5-cd63-4a4b-bdfa-828be3cd662b",
+          "name": "main response",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "uuid": "c3dacc3a-2384-42bb-b9f7-22623e607965"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"account_no\": 1,\n    \"age\": 1,\n    \"card_expiry_date\": 1,\n    \"cif\": 1,\n    \"contact_avaliability_id\": 1,\n    \"gender\": 1,\n    \"home_country\": 1,\n    \"house_type_id\": 1,\n    \"large_purchase\": 1,\n    \"product_id\": 1,\n    \"transaction_amount\": 1,\n    \"transaction_country\": 1,\n    \"transaction_currency_code\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/transactions/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 00:11:19 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "610"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T00:25:29.419Z",
+          "body": "{\n    \"data\": {\n        \"account_no\": 1,\n        \"age\": 1,\n        \"card_expiry_date\": 1,\n        \"cif\": 1,\n        \"contact_avaliability_id\": 1,\n        \"created_at\": \"2025-11-22T23:46:02\",\n        \"gender\": 1,\n        \"home_country\": 1,\n        \"house_type_id\": 1,\n        \"id\": 1,\n        \"large_purchase\": 1,\n        \"potential_fraud\": 0,\n        \"prediction\": null,\n        \"prediction_proba\": null,\n        \"product_id\": 1,\n        \"transaction_amount\": 1,\n        \"transaction_country\": 1,\n        \"transaction_currency_code\": 1,\n        \"updated_at\": \"2025-11-23T00:11:19\",\n        \"user_id\": 1\n    },\n    \"message\": \"Transaction mise à jour avec succès\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_fraud_transactions",
+      "id": "46aab721-e950-4873-a525-1bd33a8b41d2",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/fraud?page=1&per_page=20",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "fraud"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "per_page",
+              "value": "20"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "4f77dd65-5cd8-477d-89ae-ac2608387680",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/fraud",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "fraud"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 00:23:11 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "185"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T00:23:29.819Z",
+          "body": "{\n    \"count\": 0,\n    \"data\": [],\n    \"pagination\": {\n        \"has_next\": false,\n        \"has_prev\": false,\n        \"page\": 1,\n        \"pages\": 0,\n        \"per_page\": 20,\n        \"total\": 0\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_transactions_by_account",
+      "id": "ee6a4a4b-6acc-406a-af83-b5aa10ed6cef",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/account/1?page=1&per_page=20",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "account",
+            "1"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "per_page",
+              "value": "20",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "bba2d2ee-e884-4471-b203-3518e783ca31",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/account/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "account",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 00:26:49 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "392"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T00:27:05.036Z",
+          "body": "{\n    \"account_no\": 1,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"account_no\": 1,\n            \"created_at\": \"2025-11-22T23:46:02\",\n            \"id\": 1,\n            \"potential_fraud\": 0,\n            \"prediction\": null,\n            \"prediction_proba\": null,\n            \"transaction_amount\": 1,\n            \"user_id\": 1\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pages\": 1,\n        \"per_page\": 20,\n        \"total\": 1\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "get_transaction_stats",
+      "id": "eb8a9ff7-a2c8-483f-a71a-8dd906566346",
+      "request": {
+        "method": "GET",
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/transactions/stats",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "stats"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "e42090e9-e2ec-4629-acb3-3bbd5fcf7063",
+          "name": "main response",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/stats",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "stats"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 00:28:31 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "208"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T00:31:17.991Z",
+          "body": "{\n    \"stats\": {\n        \"average_amount\": 1,\n        \"fraud_rate\": 0,\n        \"fraudulent\": 0,\n        \"legitimate\": 1,\n        \"max_amount\": 1,\n        \"total_amount\": 1,\n        \"total_transactions\": 1\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "mark_transaction_as_fraud",
+      "id": "7d8dd2e4-ae3b-463e-9851-f204a255c42c",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"is_fraud\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/transactions/1/mark-fraud",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "1",
+            "mark-fraud"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "a18f5a08-55a2-473b-9401-da68e61a1287",
+          "name": "mark_transaction_as_fraud",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/transactions/1/mark-fraud",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "1",
+                "mark-fraud"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 01:02:47 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "301"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T01:03:07.967Z",
+          "body": "{\n    \"data\": {\n        \"account_no\": 1,\n        \"created_at\": \"2025-11-22T23:46:02\",\n        \"id\": 1,\n        \"potential_fraud\": 1,\n        \"prediction\": null,\n        \"prediction_proba\": null,\n        \"transaction_amount\": 1,\n        \"user_id\": 1\n    },\n    \"message\": \"Transaction marquée comme frauduleuse\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "search_transactions",
+      "id": "f64fad3d-215c-4f18-b52c-d309f6b31f79",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/transactions/search?min_amount=0&max_amount=100&page=1&per_page=20",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "min_amount",
+              "value": "0"
+            },
+            {
+              "key": "max_amount",
+              "value": "100"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "per_page",
+              "value": "20"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "680d367c-d56e-4e70-9f52-dbc9d27aa9e9",
+          "name": "search_transactions",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/transactions/search?min_amount=0&max_amount=100&page=1&per_page=20",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "min_amount",
+                  "value": "0",
+                  "uuid": "98ba1e1d-d8cd-4e97-b76d-b591cc622f9b"
+                },
+                {
+                  "key": "max_amount",
+                  "value": "100",
+                  "uuid": "55e36fd1-3833-4a68-8f87-68d45a1acaa1"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "uuid": "56388940-0ba7-4c89-a668-d15016da94e2"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20",
+                  "uuid": "a30ffa2e-381e-4a2b-8381-105750599234"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 01:06:25 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "440"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T01:06:43.947Z",
+          "body": "{\n    \"count\": 1,\n    \"data\": [\n        {\n            \"account_no\": 1,\n            \"created_at\": \"2025-11-22T23:46:02\",\n            \"id\": 1,\n            \"potential_fraud\": 1,\n            \"prediction\": null,\n            \"prediction_proba\": null,\n            \"transaction_amount\": 1,\n            \"user_id\": 1\n        }\n    ],\n    \"filters\": {\n        \"max_amount\": 100,\n        \"min_amount\": 0\n    },\n    \"pagination\": {\n        \"page\": 1,\n        \"pages\": 1,\n        \"per_page\": 20,\n        \"total\": 1\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "delete_transaction",
+      "id": "fd7600b4-2598-4957-ba7c-a0baad64c2cc",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{url}}/transactions/1",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "transactions",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "564d4e9e-ee9c-47d5-835c-113bfcdbadc1",
+          "name": "main response",
+          "originalRequest": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{url}}/transactions/1",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "transactions",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.9.6"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 23 Nov 2025 01:34:09 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "82"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-23T01:34:46.941Z",
+          "body": "{\n    \"message\": \"Transaction supprimée avec succès\",\n    \"success\": true\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  }
+}
