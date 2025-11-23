@@ -12,9 +12,9 @@ class PredictionService:
     """Service pour la prédiction de fraude avec le modèle ML"""
     
     # Chemins par défaut des fichiers du modèle
-    DEFAULT_MODEL_PATH = 'ml/models/model.pkl'
-    DEFAULT_SCALER_PATH = 'ml/models/scaler.pkl'
-    DEFAULT_STATS_PATH = 'ml/models/train_stats.pkl'
+    DEFAULT_MODEL_PATH = 'ml/model.pkl'
+    DEFAULT_SCALER_PATH = 'ml/scaler.pkl'
+    DEFAULT_STATS_PATH = 'ml/train_stats.pkl'
     
     # Instance singleton
     _instance = None
