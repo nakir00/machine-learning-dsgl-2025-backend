@@ -106,21 +106,27 @@ def health_check():
     """Vérification de santé de l'API et de la connexion DB"""
     db_test = test_connection()
     
-    mysql_host = os.environ.get("MYSQL_HOST", "localhost")
-    mysql_port = os.environ.get("MYSQL_PORT", "3306")
-    mysql_database = os.environ.get("MYSQL_DATABASE", "fraud_detection")
-    mysql_user = os.environ.get("MYSQL_USER", "root")
+    # Récupération du chemin de la base de données SQLite
+    db_path = os.environ.get("DATABASE_PATH", "fraud_detection.db")
+    if not os.path.isabs(db_path):
+        base_dir = os.path.abspath(os.path.dirname(__file__))
+        db_path = os.path.join(base_dir, db_path)
+    
+    # Vérification de l'existence du fichier
+    db_exists = os.path.exists(db_path)
+    db_size = os.path.getsize(db_path) if db_exists else 0
     
     return jsonify({
         'status': 'healthy' if db_test['status'] == 'success' else 'unhealthy',
         'database': {
+            'type': 'SQLite',
             'status': db_test['status'],
             'message': db_test['message'],
             'config': {
-                'host': mysql_host,
-                'port': mysql_port,
-                'database': mysql_database,
-                'user': mysql_user
+                'path': db_path,
+                'exists': db_exists,
+                'size_bytes': db_size,
+                'size_mb': round(db_size / (1024 * 1024), 2) if db_exists else 0
             }
         },
         'api': {
