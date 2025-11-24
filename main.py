@@ -6,6 +6,7 @@ from flask import Flask, jsonify
 import os
 
 # Imports locaux
+from config.cors_config import init_cors
 from db.connexion.connexion import init_db, create_tables, test_connection
 from config.jwt_config import init_jwt
 from routes.user_routes import user_bp
@@ -43,6 +44,13 @@ jwt = init_jwt(app)
 
 # Créer les tables au démarrage (après JWT pour avoir UserAuth)
 create_tables(app)
+
+# ============================================================================
+# CONFIGURATION CORS
+# ============================================================================
+
+# Initialiser CORS
+init_cors(app)
 
 # ============================================================================
 # ENREGISTREMENT DES BLUEPRINTS (ROUTES)

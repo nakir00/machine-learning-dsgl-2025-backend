@@ -128,7 +128,7 @@
       ]
     },
     {
-      "name": "New Request",
+      "name": "model-status",
       "id": "1992af57-45ab-4206-a519-0f600b8ccdb6",
       "request": {
         "method": "GET",
