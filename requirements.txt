@@ -26,7 +26,7 @@ imbalanced-learn
 
 # Deep Learning (classification d'images)
 tensorflow==2.16.2
-opencv-python
+opencv-python-headless==4.10.0.84
 Pillow==11.3.0
 
 # Auth

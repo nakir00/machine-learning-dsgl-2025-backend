@@ -219,12 +219,12 @@ class ImagePredictionService:
             return {
                 'success': True,
                 'prediction': float(prediction),
-                'class': 'Sad' if is_sad else 'Happy',
+                'class': 'uninfected' if is_sad else 'parasited',
                 'confidence': round(confidence * 100, 2),
                 'threshold': threshold,
                 'probabilities': {
-                    'sad': round(float(prediction) * 100, 2),
-                    'happy': round((1 - float(prediction)) * 100, 2)
+                    'uninfected': round(float(prediction) * 100, 2),
+                    'parasited': round((1 - float(prediction)) * 100, 2)
                 }
             }
             
