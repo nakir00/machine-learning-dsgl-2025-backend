@@ -12,8 +12,10 @@ from config.jwt_config import init_jwt
 from routes.user_routes import user_bp
 from routes.transaction_routes import transaction_bp
 from routes.prediction_routes import prediction_bp
+from routes.images_routes import image_bp
 from routes.auth_routes import auth_bp
 from services.prediction_service import PredictionService
+from services.image_prediction_service import ImagePredictionService
 
 # Configuration du port
 port = int(os.environ.get("PORT", 8080))
@@ -22,14 +24,14 @@ port = int(os.environ.get("PORT", 8080))
 app = Flask(__name__)
 
 # Configuration Flask
-app.config['WTF_CSRF_ENABLED'] = False  # Désactivé pour API REST
+app.config['WTF_CSRF_ENABLED'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB max upload
 
 # ============================================================================
 # INITIALISATION DE LA BASE DE DONNÉES
 # ============================================================================
 
-# Initialiser la connexion à la base de données
 db = init_db(app)
 
 # ============================================================================
@@ -42,24 +44,23 @@ jwt = init_jwt(app)
 # CRÉATION DES TABLES
 # ============================================================================
 
-# Créer les tables au démarrage (après JWT pour avoir UserAuth)
 create_tables(app)
 
 # ============================================================================
 # CONFIGURATION CORS
 # ============================================================================
 
-# Initialiser CORS
 init_cors(app)
 
 # ============================================================================
 # ENREGISTREMENT DES BLUEPRINTS (ROUTES)
 # ============================================================================
 
-app.register_blueprint(auth_bp)  # Routes d'authentification
+app.register_blueprint(auth_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(transaction_bp)
 app.register_blueprint(prediction_bp)
+app.register_blueprint(image_bp)  # Nouveau blueprint pour les images
 
 # ============================================================================
 # ROUTES PRINCIPALES
@@ -70,7 +71,7 @@ def index():
     """Page d'accueil - Documentation API"""
     return jsonify({
         'message': 'API de détection de fraude bancaire',
-        'version': '2.0.0',
+        'version': '2.1.0',
         'status': 'online',
         'documentation': {
             'health': {
@@ -94,6 +95,13 @@ def index():
                 'POST /predict/transaction/<id>': 'Prédire pour une transaction en BDD',
                 'POST /predict/transactions/pending': 'Prédire toutes les transactions en attente'
             },
+            'image_predictions': {
+                'GET /predict/image/status': 'Statut du modèle d\'images',
+                'POST /predict/image/reload': 'Recharger le modèle d\'images',
+                'POST /predict/image/predict': 'Prédire une image (Happy/Sad)',
+                'POST /predict/image/predict/file': 'Prédire depuis un chemin',
+                'POST /predict/image/predict/batch': 'Prédire plusieurs images'
+            },
             'transactions': {
                 'GET /transactions': 'Liste des transactions (pagination)',
                 'GET /transactions/<id>': 'Détails d\'une transaction',
@@ -115,15 +123,17 @@ def health_check():
     """Vérification de santé de l'API et de la connexion DB"""
     db_test = test_connection()
     
-    # Récupération du chemin de la base de données SQLite
     db_path = os.environ.get("DATABASE_PATH", "fraud_detection.db")
     if not os.path.isabs(db_path):
         base_dir = os.path.abspath(os.path.dirname(__file__))
         db_path = os.path.join(base_dir, db_path)
     
-    # Vérification de l'existence du fichier
     db_exists = os.path.exists(db_path)
     db_size = os.path.getsize(db_path) if db_exists else 0
+    
+    # Vérifier les modèles
+    fraud_model_loaded = PredictionService.is_model_loaded()
+    image_model_loaded = ImagePredictionService.is_model_loaded()
     
     return jsonify({
         'status': 'healthy' if db_test['status'] == 'success' else 'unhealthy',
@@ -138,15 +148,26 @@ def health_check():
                 'size_mb': round(db_size / (1024 * 1024), 2) if db_exists else 0
             }
         },
+        'models': {
+            'fraud_detection': {
+                'loaded': fraud_model_loaded,
+                'status': 'ready' if fraud_model_loaded else 'not loaded'
+            },
+            'image_classification': {
+                'loaded': image_model_loaded,
+                'status': 'ready' if image_model_loaded else 'not loaded'
+            }
+        },
         'api': {
-            'version': '2.0.0',
+            'version': '2.1.0',
             'environment': os.environ.get('ENV', 'production')
         }
     })
+
+
 @app.route('/debug/model-status')
 def model_status():
-    """Diagnostic complet du modèle"""
-    import os
+    """Diagnostic complet des modèles"""
     from pathlib import Path
     
     base_dir = Path(__file__).resolve().parent
@@ -156,12 +177,14 @@ def model_status():
         'working_directory': str(Path.cwd()),
         'base_directory': str(base_dir),
         'ml_directory_exists': ml_dir.exists(),
-        'ml_files': list(str(f) for f in ml_dir.glob('*.pkl')) if ml_dir.exists() else [],
-        'model_info': PredictionService.get_model_info(),
+        'ml_files': list(str(f) for f in ml_dir.glob('*.*')) if ml_dir.exists() else [],
+        'fraud_model': PredictionService.get_model_info(),
+        'image_model': ImagePredictionService.get_model_info(),
         'environment': {
             'MODEL_PATH': os.environ.get('MODEL_PATH', 'Not set'),
             'SCALER_PATH': os.environ.get('SCALER_PATH', 'Not set'),
             'STATS_PATH': os.environ.get('STATS_PATH', 'Not set'),
+            'IMAGE_MODEL_PATH': os.environ.get('IMAGE_MODEL_PATH', 'Not set'),
         }
     })
 
@@ -190,6 +213,16 @@ def method_not_allowed(error):
     }), 405
 
 
+@app.errorhandler(413)
+def file_too_large(error):
+    """Erreur 413 - Fichier trop volumineux"""
+    return jsonify({
+        'success': False,
+        'error': 'Fichier trop volumineux (max: 16 MB)',
+        'code': 413
+    }), 413
+
+
 @app.errorhandler(500)
 def internal_error(error):
     """Erreur 500 - Erreur serveur interne"""
@@ -216,11 +249,12 @@ def handle_exception(error):
 
 if __name__ == "__main__":
     print("\n" + "="*80)
-    print("🚀 DÉMARRAGE DE L'API - Détection de fraude bancaire")
+    print("🚀 DÉMARRAGE DE L'API - Détection de fraude bancaire + Classification d'images")
     print("="*80)
     print(f"📍 Port: {port}")
-    print(f"🗄️  Base de données: {os.environ.get('MYSQL_DATABASE', 'fraud_detection')}")
-    print(f"🔗 Host: {os.environ.get('MYSQL_HOST', 'localhost')}")
+    print(f"🗄️  Base de données: {os.environ.get('DATABASE_PATH', 'fraud_detection.db')}")
+    print(f"🤖 Modèle fraude: {PredictionService.is_model_loaded()}")
+    print(f"🖼️  Modèle image: {ImagePredictionService.is_model_loaded()}")
     print("="*80 + "\n")
     
     app.run(

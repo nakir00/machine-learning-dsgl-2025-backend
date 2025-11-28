@@ -1,0 +1,360 @@
+{
+  "info": {
+    "_postman_id": "339749ba-e5de-40af-ae2e-21df58e21d5a",
+    "name": "image",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "model_status",
+      "id": "1d27f7d8-a7a8-4574-877a-d1f96ad620ec",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/predict/image/status",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "image",
+            "status"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "317376bc-b060-40c2-8d9c-4dc75e33da91",
+          "name": "model_status",
+          "originalRequest": {
+            "method": "GET",
+            "url": {
+              "raw": "{{url}}/predict/image/status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "image",
+                "status"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.12.9"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 28 Nov 2025 13:46:05 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "279"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-28T14:12:49.685Z",
+          "body": "{\n    \"model\": {\n        \"input_shape\": \"(None, 256, 256, 3)\",\n        \"loaded\": true,\n        \"model_type\": \"Sequential\",\n        \"output_shape\": \"(None, 1)\",\n        \"path\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/imageclassifier.h5\"\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "reload_model",
+      "id": "43211352-2810-4f04-98a1-cb5900e44f11",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"model_path\":\"./ml/imageclassifier.h5\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/predict/image/reload",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "image",
+            "reload"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "eaaf69e9-c76b-4c1c-a232-800276570485",
+          "name": "reload_model",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "uuid": "88951be8-53af-41a6-ae1a-8811b075dadb"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"model_path\":\"./ml/imageclassifier.h5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/predict/image/reload",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "image",
+                "reload"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.12.9"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 28 Nov 2025 13:45:49 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "338"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-28T14:12:54.899Z",
+          "body": "{\n    \"message\": \"Modèle rechargé avec succès\",\n    \"model\": {\n        \"input_shape\": \"(None, 256, 256, 3)\",\n        \"loaded\": true,\n        \"model_type\": \"Sequential\",\n        \"output_shape\": \"(None, 1)\",\n        \"path\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/imageclassifier.h5\"\n    },\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_image",
+      "id": "9e5f8c71-95ad-43a8-bc03-c68a16f216d1",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "09f15cec-bf50-4959-bf3b-a9b9b24c3d47",
+              "src": [
+                "/Users/mouhamednaby/Downloads/data/Uninfected/C1_thinF_IMG_20150604_104722_cell_73.png"
+              ]
+            },
+            {
+              "key": "threshold",
+              "value": "0.55",
+              "type": "text",
+              "uuid": "391568e9-e471-41dc-a409-d6dd6c7558a6"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/predict/image/predict",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "image",
+            "predict"
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "0eb9aed3-6cbc-4ea9-9f0b-0c4586c08d87",
+          "name": "predict_image",
+          "originalRequest": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "uuid": "09f15cec-bf50-4959-bf3b-a9b9b24c3d47",
+                  "src": [
+                    "/Users/mouhamednaby/Downloads/data/Uninfected/C1_thinF_IMG_20150604_104722_cell_73.png"
+                  ]
+                },
+                {
+                  "key": "threshold",
+                  "value": "0.55",
+                  "type": "text",
+                  "uuid": "391568e9-e471-41dc-a409-d6dd6c7558a6"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{url}}/predict/image/predict",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "predict",
+                "image",
+                "predict"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "_postman_previewtype": "html",
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.3 Python/3.12.9"
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 28 Nov 2025 14:08:57 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "298"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "responseTime": "2025-11-28T14:12:44.303Z",
+          "body": "{\n    \"data\": {\n        \"class\": \"Sad\",\n        \"confidence\": 100,\n        \"prediction\": 1,\n        \"probabilities\": {\n            \"happy\": 0,\n            \"sad\": 100\n        },\n        \"success\": true,\n        \"threshold\": 0.55\n    },\n    \"file_size\": 8319,\n    \"filename\": \"C1_thinF_IMG_20150604_104722_cell_73.png\",\n    \"success\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "predict_image_from_path",
+      "id": "def561e4-2699-4c8b-93e8-2b827f068c02",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{url}}/predict/file",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "file"
+          ]
+        }
+      }
+    },
+    {
+      "name": "predict_batch",
+      "id": "5c34fa68-67d9-472d-a576-ea0bccfa04e9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "threshold",
+              "value": "0.5",
+              "type": "text",
+              "uuid": "e3da1cd8-296f-4199-abd8-e4a8f7467b97"
+            },
+            {
+              "key": "images",
+              "type": "file",
+              "uuid": "5f3262b9-4e68-4717-986a-f0ab2831a98a",
+              "src": [
+                "/Users/mouhamednaby/Downloads/data/Uninfected/C1_thinF_IMG_20150604_104722_cell_73.png"
+              ]
+            },
+            {
+              "key": "images",
+              "type": "file",
+              "uuid": "8f8a57b3-25b8-4ff2-ad5b-62ddaae5347a",
+              "src": [
+                "/Users/mouhamednaby/Downloads/data/Parasitized/C33P1thinF_IMG_20150619_115740a_cell_163.png"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/predict/batch",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "predict",
+            "batch"
+          ]
+        }
+      }
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  }
+}

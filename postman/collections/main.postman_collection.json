@@ -22,7 +22,7 @@
       },
       "response": [
         {
-          "id": "540fe73d-1778-480e-84a1-ba6535429925",
+          "id": "826c8eff-8e16-4646-8b08-3490db962ed0",
           "name": "main response",
           "originalRequest": {
             "method": "GET",
@@ -38,7 +38,7 @@
           },
           "status": "OK",
           "code": 200,
-          "_postman_previewlanguage": "Text",
+          "_postman_previewlanguage": "json",
           "_postman_previewtype": "html",
           "header": [
             {
@@ -47,7 +47,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 22 Nov 2025 13:46:52 GMT"
+              "value": "Fri, 28 Nov 2025 11:16:29 GMT"
             },
             {
               "key": "Content-Type",
@@ -55,14 +55,15 @@
             },
             {
               "key": "Content-Length",
-              "value": "1886"
+              "value": "2287"
             },
             {
               "key": "Connection",
               "value": "close"
             }
           ],
-          "body": "{\n    \"documentation\": {\n        \"health\": {\n            \"GET /health\": \"Vérifier l'état de l'API et de la base de données\"\n        },\n        \"predictions\": {\n            \"GET /predict/status\": \"Statut du modèle ML\",\n            \"POST /predict/batch\": \"Prédire un batch de transactions\",\n            \"POST /predict/reload\": \"Recharger le modèle\",\n            \"POST /predict/transaction\": \"Prédire une transaction\",\n            \"POST /predict/transaction/<id>\": \"Prédire pour une transaction en BDD\",\n            \"POST /predict/transaction/explain\": \"Analyser les facteurs de risque\",\n            \"POST /predict/transactions/pending\": \"Prédire toutes les transactions en attente\"\n        },\n        \"transactions\": {\n            \"DELETE /transactions/<id>\": \"Supprimer une transaction\",\n            \"GET /transactions\": \"Liste des transactions (pagination)\",\n            \"GET /transactions/<id>\": \"Détails d'une transaction\",\n            \"GET /transactions/account/<account_no>\": \"Transactions d'un compte\",\n            \"GET /transactions/fraud\": \"Transactions frauduleuses\",\n            \"GET /transactions/search\": \"Rechercher par montant\",\n            \"GET /transactions/stats\": \"Statistiques des transactions\",\n            \"POST /transactions\": \"Créer une transaction\",\n            \"POST /transactions/<id>/mark-fraud\": \"Marquer comme fraude\",\n            \"PUT /transactions/<id>\": \"Mettre à jour une transaction\"\n        },\n        \"users\": {\n            \"DELETE /users/<id>\": \"Supprimer un utilisateur\",\n            \"GET /users\": \"Liste des utilisateurs (pagination)\",\n            \"GET /users/<id>\": \"Détails d'un utilisateur\",\n            \"GET /users/search?q=\": \"Rechercher des utilisateurs\",\n            \"GET /users/stats\": \"Statistiques des utilisateurs\",\n            \"POST /users\": \"Créer un utilisateur\",\n            \"PUT /users/<id>\": \"Mettre à jour un utilisateur\"\n        }\n    },\n    \"message\": \"API de détection de fraude bancaire\",\n    \"status\": \"online\",\n    \"version\": \"2.0.0\"\n}"
+          "responseTime": "2025-11-28T11:16:35.756Z",
+          "body": "{\n    \"documentation\": {\n        \"health\": {\n            \"GET /health\": \"Vérifier l'état de l'API et de la base de données\"\n        },\n        \"image_predictions\": {\n            \"GET /predict/image/status\": \"Statut du modèle d'images\",\n            \"POST /predict/image/predict\": \"Prédire une image (Happy/Sad)\",\n            \"POST /predict/image/predict/batch\": \"Prédire plusieurs images\",\n            \"POST /predict/image/predict/file\": \"Prédire depuis un chemin\",\n            \"POST /predict/image/reload\": \"Recharger le modèle d'images\"\n        },\n        \"predictions\": {\n            \"GET /predict/status\": \"Statut du modèle ML\",\n            \"POST /predict/batch\": \"Prédire un batch de transactions\",\n            \"POST /predict/reload\": \"Recharger le modèle\",\n            \"POST /predict/transaction\": \"Prédire une transaction\",\n            \"POST /predict/transaction/<id>\": \"Prédire pour une transaction en BDD\",\n            \"POST /predict/transaction/explain\": \"Analyser les facteurs de risque\",\n            \"POST /predict/transactions/pending\": \"Prédire toutes les transactions en attente\"\n        },\n        \"transactions\": {\n            \"DELETE /transactions/<id>\": \"Supprimer une transaction\",\n            \"GET /transactions\": \"Liste des transactions (pagination)\",\n            \"GET /transactions/<id>\": \"Détails d'une transaction\",\n            \"GET /transactions/account/<account_no>\": \"Transactions d'un compte\",\n            \"GET /transactions/fraud\": \"Transactions frauduleuses\",\n            \"GET /transactions/search\": \"Rechercher par montant\",\n            \"GET /transactions/stats\": \"Statistiques des transactions\",\n            \"POST /transactions\": \"Créer une transaction\",\n            \"POST /transactions/<id>/mark-fraud\": \"Marquer comme fraude\",\n            \"PUT /transactions/<id>\": \"Mettre à jour une transaction\"\n        },\n        \"users\": {\n            \"DELETE /users/<id>\": \"Supprimer un utilisateur\",\n            \"GET /users\": \"Liste des utilisateurs (pagination)\",\n            \"GET /users/<id>\": \"Détails d'un utilisateur\",\n            \"GET /users/search?q=\": \"Rechercher des utilisateurs\",\n            \"GET /users/stats\": \"Statistiques des utilisateurs\",\n            \"POST /users\": \"Créer un utilisateur\",\n            \"PUT /users/<id>\": \"Mettre à jour un utilisateur\"\n        }\n    },\n    \"message\": \"API de détection de fraude bancaire\",\n    \"status\": \"online\",\n    \"version\": \"2.1.0\"\n}"
         }
       ]
     },
@@ -83,8 +84,8 @@
       },
       "response": [
         {
-          "id": "33fdc92a-0dff-455b-a3de-3cae87aaa755",
-          "name": "main response",
+          "id": "17999ef4-7c24-41fa-bd9d-bc03b86b73e8",
+          "name": "health",
           "originalRequest": {
             "method": "GET",
             "url": {
@@ -99,7 +100,7 @@
           },
           "status": "OK",
           "code": 200,
-          "_postman_previewlanguage": "Text",
+          "_postman_previewlanguage": "json",
           "_postman_previewtype": "html",
           "header": [
             {
@@ -108,7 +109,7 @@
             },
             {
               "key": "Date",
-              "value": "Sat, 22 Nov 2025 13:48:20 GMT"
+              "value": "Fri, 28 Nov 2025 11:16:56 GMT"
             },
             {
               "key": "Content-Type",
@@ -116,14 +117,15 @@
             },
             {
               "key": "Content-Length",
-              "value": "346"
+              "value": "617"
             },
             {
               "key": "Connection",
               "value": "close"
             }
           ],
-          "body": "{\n    \"api\": {\n        \"environment\": \"local\",\n        \"version\": \"2.0.0\"\n    },\n    \"database\": {\n        \"config\": {\n            \"database\": \"fraud_detection\",\n            \"host\": \"localhost\",\n            \"port\": \"3306\",\n            \"user\": \"fraud_user\"\n        },\n        \"message\": \"Connexion à la base de données réussie\",\n        \"status\": \"success\"\n    },\n    \"status\": \"healthy\"\n}"
+          "responseTime": "2025-11-28T11:17:15.947Z",
+          "body": "{\n    \"api\": {\n        \"environment\": \"local\",\n        \"version\": \"2.1.0\"\n    },\n    \"database\": {\n        \"config\": {\n            \"exists\": false,\n            \"path\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/fraud_detection.db\",\n            \"size_bytes\": 0,\n            \"size_mb\": 0\n        },\n        \"message\": \"Connexion à la base de données réussie\",\n        \"status\": \"success\",\n        \"type\": \"SQLite\"\n    },\n    \"models\": {\n        \"fraud_detection\": {\n            \"loaded\": true,\n            \"status\": \"ready\"\n        },\n        \"image_classification\": {\n            \"loaded\": false,\n            \"status\": \"not loaded\"\n        }\n    },\n    \"status\": \"healthy\"\n}"
         }
       ]
     },
@@ -133,13 +135,20 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": ""
+          "raw": "{{url}}/debug/model-status",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "debug",
+            "model-status"
+          ]
         }
       },
       "response": [
         {
-          "id": "bcbd385b-cbb7-4baa-91c5-4ca22041ef51",
-          "name": "model_status",
+          "id": "8ac28a31-b2c4-406c-994b-9f3e7b2784e1",
+          "name": "main response",
           "originalRequest": {
             "method": "GET",
             "url": {
@@ -164,7 +173,7 @@
             },
             {
               "key": "Date",
-              "value": "Sun, 23 Nov 2025 17:44:46 GMT"
+              "value": "Fri, 28 Nov 2025 11:20:38 GMT"
             },
             {
               "key": "Content-Type",
@@ -172,15 +181,15 @@
             },
             {
               "key": "Content-Length",
-              "value": "1203"
+              "value": "1650"
             },
             {
               "key": "Connection",
               "value": "close"
             }
           ],
-          "responseTime": "2025-11-23T17:47:53.840Z",
-          "body": "{\n    \"base_directory\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen\",\n    \"environment\": {\n        \"MODEL_PATH\": \"ml/model.pkl\",\n        \"SCALER_PATH\": \"ml/scaler.pkl\",\n        \"STATS_PATH\": \"ml/train_stats.pkl\"\n    },\n    \"ml_directory_exists\": true,\n    \"ml_files\": [\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/scaler.pkl\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/model.pkl\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/train_stats.pkl\"\n    ],\n    \"model_info\": {\n        \"has_scaler\": true,\n        \"has_train_stats\": true,\n        \"loaded\": true,\n        \"model_type\": \"GradientBoostingClassifier\",\n        \"paths\": {\n            \"model\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/services/ml/model.pkl\",\n            \"scaler\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/services/ml/scaler.pkl\",\n            \"stats\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/services/ml/train_stats.pkl\"\n        }\n    },\n    \"working_directory\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen\"\n}"
+          "responseTime": "2025-11-28T11:20:39.514Z",
+          "body": "{\n    \"base_directory\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen\",\n    \"environment\": {\n        \"IMAGE_MODEL_PATH\": \"ml/imageclassifier.h5\",\n        \"MODEL_PATH\": \"ml/model.pkl\",\n        \"SCALER_PATH\": \"ml/scaler.pkl\",\n        \"STATS_PATH\": \"ml/train_stats.pkl\"\n    },\n    \"fraud_model\": {\n        \"has_scaler\": true,\n        \"has_train_stats\": true,\n        \"loaded\": true,\n        \"model_type\": \"GradientBoostingClassifier\",\n        \"paths\": {\n            \"model\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/model.pkl\",\n            \"scaler\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/scaler.pkl\",\n            \"stats\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/train_stats.pkl\"\n        }\n    },\n    \"image_model\": {\n        \"exists\": true,\n        \"loaded\": false,\n        \"message\": \"Modèle non chargé\",\n        \"path\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/imageclassifier.h5\"\n    },\n    \"ml_directory_exists\": true,\n    \"ml_files\": [\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/scaler.pkl\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/imageclassifier.h5\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/.DS_Store\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/model.pkl\",\n        \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen/ml/train_stats.pkl\"\n    ],\n    \"working_directory\": \"/Users/mouhamednaby/Documents/cours/uadb/semestre 1/machine learning/examen\"\n}"
         }
       ]
     }
