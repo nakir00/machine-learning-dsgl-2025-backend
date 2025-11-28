@@ -55,6 +55,6 @@ def init_cors(app):
     if env == 'local':
         print(f"   Origines autorisées: {cors_config['origins']}")
     else:
-        print(f"   Origine autorisée: {frontend_url}")
+        print(f"   Origine autorisée....")
     
     return app
